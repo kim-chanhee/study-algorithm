@@ -1,0 +1,27 @@
+# 소트인사이드
+
+# A = int(input())
+# arr_list = []
+
+# B = arr_list.append(A)
+
+# B.sort(reverse=True)
+# print(B)
+
+# A = sorted([3,5,2,1,4], reverse = True)
+# print(A)
+
+
+# A = int(input())
+# arr_list = []
+
+# arr_list.append(A)
+# arr_list.sort(reverse=True)
+# for i in arr_list:
+#     print(i)
+
+
+nums = list(map(int, input()))
+nums.sort(reverse=True)
+for i in nums:
+    print(i,end='')
