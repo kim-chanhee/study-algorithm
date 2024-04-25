@@ -30,18 +30,29 @@
 # 1,2,5,7,8  + +
 # x          - - - - -   8,7,5,2,1
 # ----------------------------------------
-stack = []
-count = 1
-op = []
+stack = []  # 스택의 상태를 추적하기 위한 리스트
+count = 1  # 스택에 넣을 다음 숫자를 추적하기 위한 변수
+op = []  # 연산을 기록하기 위한 리스트('+': 넣기, '-': 빼기)
 
-N = int(input())  
+N = int(input())  # 연산의 수를 입력받음
 for i in range(N):
-    num = int(input())
-    # num 이하 숫자까지 스택에 넣기  num = 4
-    while count <= num:
-        stack.append(count) 
-        op.append('+') # '+' 4개 쌓인다.
-        count += 1  # 
-
-    # num 이랑 스택 맨 위 숫자가 동일하다면 제거
+    num = int(input())  # 스택 연산으로 맞춰야 하는 대상 숫자 입력받음
     
+    # count가 num에 도달하거나 넘을 때까지 스택에 숫자를 넣음
+    while count <= num:
+        stack.append(count)
+        op.append('+')  # 넣는 연산을 기록
+        count += 1  # 다음에 넣을 숫자로 이동
+    
+    # 스택의 맨 위 숫자가 num과 동일할 때까지 스택에서 숫자를 빼기
+    if stack[-1] == num:  # 스택의 맨 위가 우리가 원하는 숫자인 경우
+        stack.pop()  # 스택에서 해당 숫자를 뺌
+        op.append('-')  # 빼는 연산을 기록
+    else:
+        # 스택의 맨 위 숫자와 num이 동일하지 않다면, 해당 시퀀스는 불가능
+        print("NO")
+        break
+else:  # 'for' 루프에 해당하는 'else', 루프가 'break' 없이 정상적으로 종료되었을 경우 실행
+    # 모든 숫자에 대해 성공적으로 연산을 수행했다면, 연산의 순서를 출력
+    for o in op:
+        print(o)  
